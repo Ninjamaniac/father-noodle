@@ -33,4 +33,4 @@ async def Dismissed(ctx):
     for x in bot.voice_clients:
         if(x.server == ctx.message.server):
             return await x.disconnect()
-bot.login (process.env.TOKEN)
+bot.run(bot_token)
