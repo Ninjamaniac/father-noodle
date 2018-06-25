@@ -31,7 +31,8 @@ async def Kevin(ctx):
 
 @bot.command(pass_context=True)
 async def Dismissed(ctx):
-    for x in bot.voice_clients:
-        if(x.server == ctx.message.server):
-            return await x.disconnect()
+    server = ctx.message.server
+    voice_client = bot.voice_client_in(serveer)
+    await voice_client.disconnect()
+    
 bot.run(os.environ['bot_token'])
