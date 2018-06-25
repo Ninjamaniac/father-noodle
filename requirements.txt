@@ -1,5 +1,2 @@
 discord
-commands
-Bot
-voiceClient
 asyncio
