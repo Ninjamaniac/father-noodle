@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.voice_client import VoiceClient
 import asyncio
+import os
 
 bot = commands.Bot(command_prefix=">")  
 
@@ -33,4 +34,4 @@ async def Dismissed(ctx):
     for x in bot.voice_clients:
         if(x.server == ctx.message.server):
             return await x.disconnect()
-bot.run(bot_token)
+bot.run(os.environ['bot_token'])
