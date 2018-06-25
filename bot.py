@@ -7,6 +7,8 @@ import os
 
 bot = commands.Bot(command_prefix=">")  
 
+players = {}
+
 @bot.event
 async def on_ready():
     print ("Ready")
@@ -18,11 +20,14 @@ async def Father(ctx):
    await bot.say('Praise be thy Noodle', tts=True)
 
 @bot.command(pass_context=True)
-async def Pray(ctx):
+async def Pray(ctx, url):
     voice = await bot.join_voice_channel(ctx.message.author.voice.voice_channel)
-    player = voice.create_ffmpeg_player('ourpasta.mp3')
+    server = ctx.message.server
+    voice_client = bot.voice_client_in(server)
+    player = await voice_client.create_ytdl_player(url)
+    player[server.id] = player
     player.start()
-
+    
 @bot.command(pass_context=True)
 async def Kevin(ctx):
     voice = await bot.join_voice_channel(ctx.message.author.voice.voice_channel)
