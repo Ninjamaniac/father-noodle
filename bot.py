@@ -20,7 +20,7 @@ async def Father(ctx):
 @bot.command(pass_context=True)
 async def Pray(ctx):
     voice = await bot.join_voice_channel(ctx.message.author.voice.voice_channel)
-    player = voice.create_ffmpeg_player('ourpasta.mp3', after=lambda: print('done'))
+    player = voice.create_ffmpeg_player('ourpasta.mp3')
     player.start()
 
 @bot.command(pass_context=True)
